@@ -56,10 +56,10 @@ static int AppInitRawTx(int argc, char* argv[])
     if (argc<2 || mapArgs.count("-?") || mapArgs.count("-h") || mapArgs.count("-help"))
     {
         // First part of help message is specific to this utility
-        std::string strUsage = strprintf(_("%s viacoin-tx utility version"), _(PACKAGE_NAME)) + " " + FormatFullVersion() + "\n\n" +
+        std::string strUsage = strprintf(_("%s sexcoin-tx utility version"), _(PACKAGE_NAME)) + " " + FormatFullVersion() + "\n\n" +
             _("Usage:") + "\n" +
-              "  viacoin-tx [options] <hex-tx> [commands]  " + _("Update hex-encoded viacoin transaction") + "\n" +
-              "  viacoin-tx [options] -create [commands]   " + _("Create hex-encoded viacoin transaction") + "\n" +
+              "  sexcoin-tx [options] <hex-tx> [commands]  " + _("Update hex-encoded sexcoin transaction") + "\n" +
+              "  sexcoin-tx [options] -create [commands]   " + _("Create hex-encoded sexcoin transaction") + "\n" +
               "\n";
 
         fprintf(stdout, "%s", strUsage.c_str());

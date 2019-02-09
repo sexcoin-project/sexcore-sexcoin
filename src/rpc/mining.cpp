@@ -190,7 +190,7 @@ UniValue generatetoaddress(const UniValue& params, bool fHelp)
             "\nMine blocks immediately to a specified address (before the RPC call returns)\n"
             "\nArguments:\n"
             "1. numblocks    (numeric, required) How many blocks are generated immediately.\n"
-            "2. address    (string, required) The address to send the newly generated viacoin to.\n"
+            "2. address    (string, required) The address to send the newly generated sexcoin to.\n"
             "3. maxtries     (numeric, optional) How many iterations to try (default = 1000000).\n"
             "\nResult\n"
             "[ blockhashes ]     (array) hashes of blocks generated\n"
@@ -465,10 +465,10 @@ UniValue getblocktemplate(const UniValue& params, bool fHelp)
         throw JSONRPCError(RPC_INVALID_PARAMETER, "Invalid mode");
 
     if (vNodes.empty())
-        throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "Viacoin is not connected!");
+        throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "Sexcoin is not connected!");
 
     if (IsInitialBlockDownload())
-        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Viacoin is downloading blocks...");
+        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Sexcoin is downloading blocks...");
 
     static unsigned int nTransactionsUpdatedLast;
 
@@ -805,10 +805,10 @@ UniValue getauxblock(const UniValue& params, bool fHelp)
             );
 
     if (vNodes.empty())
-        throw JSONRPCError(-9, "Viacoin is not connected!");
+        throw JSONRPCError(-9, "Sexcoin is not connected!");
 
     if (IsInitialBlockDownload())
-        throw JSONRPCError(-10, "Viacoin is downloading blocks...");
+        throw JSONRPCError(-10, "Sexcoin is downloading blocks...");
 
     static map<uint256, CBlock*> mapNewBlock;
     static vector< std::unique_ptr<CBlockTemplate> > vNewBlockTemplate;
@@ -997,7 +997,7 @@ UniValue estimatesmartfee(const UniValue& params, bool fHelp)
             "1. nblocks     (numeric)\n"
             "\nResult:\n"
             "{\n"
-            "  \"feerate\" : x.x,     (numeric) estimate fee-per-kilobyte (in VIA)\n"
+            "  \"feerate\" : x.x,     (numeric) estimate fee-per-kilobyte (in SXC)\n"
             "  \"blocks\" : n         (numeric) block number where estimate was found\n"
             "}\n"
             "\n"

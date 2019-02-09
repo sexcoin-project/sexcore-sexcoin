@@ -7,6 +7,7 @@
 #define BITCOIN_PRIMITIVES_TRANSACTION_H
 
 #include "amount.h"
+#include "primitives/transactionflags.h"
 #include "script/script.h"
 #include "serialize.h"
 #include "uint256.h"
@@ -432,6 +433,18 @@ public:
     std::string ToString() const;
 
     void UpdateHash() const;
+
+    // Sexcoin Age Verification functions
+    int16_t GetAVFlags(){ return nVersion >> 16; }
+    std::string GetFlagName(transflag_t flag) const;
+    int32_t CalculateVersionWithFlag(transflag_t, int32_t nVersion);
+    int16_t GetRawFlags() const { return (nVersion >> 16); }
+    bool IsConsentAge() const { return (nVersion >> 16 & TX_F_IS_OVER_CONSENT); }
+    bool IsOver18() const { return (nVersion >> 16 & TX_F_IS_OVER_18); }
+    bool IsOver21() const { return (nVersion >> 16 & TX_F_IS_OVER_21); } 
+    bool IsFlagSet(transflag_t flag){ return nVersion & flag; }
+     
+    static bool IsFlagSet(transflag_t nFlag, int32_t nVersion){ return nVersion & nFlag; }                                                 
 };
 
 /** A mutable version of CTransaction. */
@@ -457,6 +470,9 @@ struct CMutableTransaction
      * fly, as opposed to GetHash() in CTransaction, which uses a cached result.
      */
     uint256 GetHash() const;
+    int16_t GetAVFlags(){ return nVersion >> 16; }
+    std::string GetFlagName(transflag_t flag) const;
+    int32_t CalculateVersionWithFlag(transflag_t, int32_t nVersion);                                                                                      
 };
 
 /** Compute the weight of a transaction, as defined by BIP 141 */

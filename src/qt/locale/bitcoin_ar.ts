@@ -158,7 +158,7 @@
         <translation>إعادة الفهرسة الكتل على القرص ...</translation>
     </message>
     <message>
-        <source>Send coins to a Viacoin address</source>
+        <source>Send coins to a Sexcoin address</source>
         <translation>ارسل عملات الى عنوان بيتكوين</translation>
     </message>
     <message>
@@ -182,8 +182,8 @@
         <translation>&amp;التحقق من الرسالة...</translation>
     </message>
     <message>
-        <source>Viacoin</source>
-        <translation>Viacoin</translation>
+        <source>Sexcoin</source>
+        <translation>Sexcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -210,12 +210,12 @@
         <translation>تشفير المفتاح الخاص بمحفظتك</translation>
     </message>
     <message>
-        <source>Sign messages with your Viacoin addresses to prove you own them</source>
-        <translation>وقَع الرسائل بواسطة ال: Viacoin الخاص بك لإثبات امتلاكك لهم</translation>
+        <source>Sign messages with your Sexcoin addresses to prove you own them</source>
+        <translation>وقَع الرسائل بواسطة ال: Sexcoin الخاص بك لإثبات امتلاكك لهم</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Viacoin addresses</source>
-        <translation>تحقق من الرسائل للتأكد من أنَها وُقعت برسائل Viacoin محدَدة</translation>
+        <source>Verify messages to ensure they were signed with specified Sexcoin addresses</source>
+        <translation>تحقق من الرسائل للتأكد من أنَها وُقعت برسائل Sexcoin محدَدة</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -234,7 +234,7 @@
         <translation>شريط أدوات علامات التبويب</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and viacoin: URIs)</source>
+        <source>Request payments (generates QR codes and sexcoin: URIs)</source>
         <translation>أطلب دفعات (يولد كودات الرمز المربع وبيت كوين: العناوين المعطاة)</translation>
     </message>
     <message>
@@ -246,8 +246,8 @@
         <translation>عرض قائمة عناوين الإستقبال المستخدمة والملصقات</translation>
     </message>
     <message>
-        <source>Open a viacoin: URI or payment request</source>
-        <translation>فتح URI : Viacoin أو طلب دفع</translation>
+        <source>Open a sexcoin: URI or payment request</source>
+        <translation>فتح URI : Sexcoin أو طلب دفع</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
@@ -1014,8 +1014,8 @@
         <translation>هذا دفع اعتيادي</translation>
     </message>
     <message>
-        <source>The Viacoin address to send the payment to</source>
-        <translation>عنوان الViacoin المرسل اليه الدفع</translation>
+        <source>The Sexcoin address to send the payment to</source>
+        <translation>عنوان الSexcoin المرسل اليه الدفع</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -1083,8 +1083,8 @@
         <translation>التوقيع</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Viacoin address</source>
-        <translation>وقع الرسالة لتثبت انك تمتلك عنوان الViacoin هذا</translation>
+        <source>Sign the message to prove you own this Sexcoin address</source>
+        <translation>وقع الرسالة لتثبت انك تمتلك عنوان الSexcoin هذا</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -1156,7 +1156,7 @@
         <translation>قبول الاتصالات من خارج</translation>
     </message>
     <message>
-        <source>Viacoin Core</source>
+        <source>Sexcoin Core</source>
         <translation>جوهر البيت كوين</translation>
     </message>
     <message>

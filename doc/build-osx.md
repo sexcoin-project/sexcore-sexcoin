@@ -20,17 +20,17 @@ Dependencies
 
 NOTE: Building with Qt4 is still supported, however, could result in a broken UI. Building with Qt5 is recommended.
 
-Build Viacoin Core
+Build Sexcoin Core
 ------------------------
 
-1. Clone the viacoin source code and cd into `viacoin`
+1. Clone the sexcoin source code and cd into `sexcoin`
 
-        git clone https://github.com/viacoin/viacoin
-        cd viacoin
+        git clone https://github.com/sexcoin-project/sexcoin
+        cd sexcoin
 
-2.  Build viacoin-core:
+2.  Build sexcoin-core:
 
-    Configure and build the headless viacoin binaries as well as the GUI (if Qt is found).
+    Configure and build the headless sexcoin binaries as well as the GUI (if Qt is found).
 
     You can disable the GUI build by passing `--without-gui` to configure.
 
@@ -49,37 +49,37 @@ Build Viacoin Core
 Running
 -------
 
-Viacoin Core is now available at `./src/viacoind`
+Sexcoin Core is now available at `./src/sexcoind`
 
 Before running, it's recommended you create an RPC configuration file.
 
-    echo -e "rpcuser=viacoinrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/Viacoin/viacoin.conf"
+    echo -e "rpcuser=sexcoinrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/Sexcoin/sexcoin.conf"
 
-    chmod 600 "/Users/${USER}/Library/Application Support/Viacoin/viacoin.conf"
+    chmod 600 "/Users/${USER}/Library/Application Support/Sexcoin/sexcoin.conf"
 
-The first time you run viacoind, it will start downloading the blockchain. This process could take several hours.
+The first time you run sexcoind, it will start downloading the blockchain. This process could take several hours.
 
 You can monitor the download process by looking at the debug.log file:
 
-    tail -f $HOME/Library/Application\ Support/Viacoin/debug.log
+    tail -f $HOME/Library/Application\ Support/Sexcoin/debug.log
 
 Other commands:
 -------
 
-    ./src/viacoind -daemon # Starts the viacoin daemon.
-    ./src/viacoin-cli --help # Outputs a list of command-line options.
-    ./src/viacoin-cli help # Outputs a list of RPC commands when the daemon is running.
+    ./src/sexcoind -daemon # Starts the sexcoin daemon.
+    ./src/sexcoin-cli --help # Outputs a list of command-line options.
+    ./src/sexcoin-cli help # Outputs a list of RPC commands when the daemon is running.
 
 Using Qt Creator as IDE
 ------------------------
-You can use Qt Creator as an IDE, for viacoin development.
+You can use Qt Creator as an IDE, for sexcoin development.
 Download and install the community edition of [Qt Creator](https://www.qt.io/download/).
 Uncheck everything except Qt Creator during the installation process.
 
 1. Make sure you installed everything through Homebrew mentioned above
 2. Do a proper ./configure --enable-debug
 3. In Qt Creator do "New Project" -> Import Project -> Import Existing Project
-4. Enter "viacoin-qt" as project name, enter src/qt as location
+4. Enter "sexcoin-qt" as project name, enter src/qt as location
 5. Leave the file selection as it is
 6. Confirm the "summary page"
 7. In the "Projects" tab select "Manage Kits..."

@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_PRIMITIVES_BLOCKHEADER_H
-#define BITCOIN_PRIMITIVES_BLOCKHEADER_H
+#ifndef SEXCOIN_PRIMITIVES_BLOCKHEADER_H
+#define SEXCOIN_PRIMITIVES_BLOCKHEADER_H
 
 #include <memory.h>
 
@@ -102,4 +102,4 @@ public:
 };
 
 
-#endif // BITCOIN_PRIMITIVES_BLOCKHEADER_H
+#endif // SEXCOIN_PRIMITIVES_BLOCKHEADER_H

@@ -166,8 +166,8 @@
         <translation>Réindexer les blocs sur le disque...</translation>
     </message>
     <message>
-        <source>Send coins to a Viacoin address</source>
-        <translation>Envoyer des pièces à une adresse Viacoin</translation>
+        <source>Send coins to a Sexcoin address</source>
+        <translation>Envoyer des pièces à une adresse Sexcoin</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -190,8 +190,8 @@
         <translation>&amp;Vérification du message</translation>
     </message>
     <message>
-        <source>Viacoin</source>
-        <translation>Viacoin</translation>
+        <source>Sexcoin</source>
+        <translation>Sexcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -218,8 +218,8 @@
         <translation>Crypter les clé privées qui appartiennent votre portefeuille</translation>
     </message>
     <message>
-        <source>Sign messages with your Viacoin addresses to prove you own them</source>
-        <translation>Signer vos messages avec vos adresses Viacoin pour prouver que vous les détenez</translation>
+        <source>Sign messages with your Sexcoin addresses to prove you own them</source>
+        <translation>Signer vos messages avec vos adresses Sexcoin pour prouver que vous les détenez</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -238,24 +238,24 @@
         <translation>Barre d'outils des onglets</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and viacoin: URIs)</source>
-        <translation>Demander des paiements (générer QR codes et viacoin: URIs)</translation>
+        <source>Request payments (generates QR codes and sexcoin: URIs)</source>
+        <translation>Demander des paiements (générer QR codes et sexcoin: URIs)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
         <translation>Montrer la liste des adresses d'envois utilisées et les étiquettes</translation>
     </message>
     <message>
-        <source>Open a viacoin: URI or payment request</source>
-        <translation>Ouvrir un viacoin: URI ou demande de paiement</translation>
+        <source>Open a sexcoin: URI or payment request</source>
+        <translation>Ouvrir un sexcoin: URI ou demande de paiement</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
         <translation>&amp;Options de ligne de commande</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Viacoin network</source>
-        <translation><numerusform>%n connexion active au réseau Viacoin</numerusform><numerusform>%n connexions actives au réseau Viacoin</numerusform></translation>
+        <source>%n active connection(s) to Sexcoin network</source>
+        <translation><numerusform>%n connexion active au réseau Sexcoin</numerusform><numerusform>%n connexions actives au réseau Sexcoin</numerusform></translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -617,8 +617,8 @@
         <translation>Expert</translation>
     </message>
     <message>
-        <source>Automatically open the Viacoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Ouvrir le port du client Viacoin automatiquement sur le routeur. Cela ne fonctionne que si votre routeur supporte l'UPnP et si la fonctionnalité est activée.</translation>
+        <source>Automatically open the Sexcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Ouvrir le port du client Sexcoin automatiquement sur le routeur. Cela ne fonctionne que si votre routeur supporte l'UPnP et si la fonctionnalité est activée.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -781,8 +781,8 @@
         <translation>Montant</translation>
     </message>
     <message>
-        <source>Enter a Viacoin address (e.g. %1)</source>
-        <translation>Entrer une adresse Viacoin (e.g. %1)</translation>
+        <source>Enter a Sexcoin address (e.g. %1)</source>
+        <translation>Entrer une adresse Sexcoin (e.g. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1380,8 +1380,8 @@
         <translation>Impossible de démarrer le serveur HTTP. Voir le journal de débogage pour plus de détails.</translation>
     </message>
     <message>
-        <source>Viacoin Core</source>
-        <translation>Viacoin Core</translation>
+        <source>Sexcoin Core</source>
+        <translation>Sexcoin Core</translation>
     </message>
     <message>
         <source>&lt;category&gt; can be:</source>

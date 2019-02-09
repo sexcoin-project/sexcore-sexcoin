@@ -30,8 +30,8 @@
         <translation>Билдирүүнү &amp;текшерүү...</translation>
     </message>
     <message>
-        <source>Viacoin</source>
-        <translation>Viacoin</translation>
+        <source>Sexcoin</source>
+        <translation>Sexcoin</translation>
     </message>
     <message>
         <source>Wallet</source>

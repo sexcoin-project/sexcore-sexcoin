@@ -47,6 +47,7 @@ public:
     void setAddress(const QString &address);
     void pasteEntry(const SendCoinsRecipient &rv);
     bool handlePaymentRequest(const SendCoinsRecipient &recipient);
+    int32_t nTransactionFlags;
 
 public Q_SLOTS:
     void clear();

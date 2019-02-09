@@ -58,7 +58,9 @@ bool IsStandard(const CScript& scriptPubKey, txnouttype& whichType, const bool w
 
 bool IsStandardTx(const CTransaction& tx, std::string& reason, const bool witnessEnabled)
 {
-    if (tx.nVersion > CTransaction::MAX_STANDARD_VERSION || tx.nVersion < 1) {
+    //Sexcoin shift out the age verification fields
+    int32_t nVersion = tx.nVersion & 0x0000FFFF;
+    if (nVersion > CTransaction::MAX_STANDARD_VERSION || nVersion < 1) {
         reason = "version";
         return false;
     }
