@@ -32,8 +32,9 @@ public:
         Watchonly = 1,
         Date = 2,
         Type = 3,
-        ToAddress = 4,
-        Amount = 5
+        TxFlags = 4,
+        ToAddress = 5,
+        Amount = 6
     };
 
     /** Roles to get specific information from a transaction row.
@@ -72,6 +73,8 @@ public:
         StatusRole,
         /** Unprocessed icon */
         RawDecorationRole,
+        /** Age Verification Flags */
+        TxFlagsRole                             
     };
 
     int rowCount(const QModelIndex &parent) const;
@@ -98,11 +101,13 @@ private:
     QString formatTxDate(const TransactionRecord *wtx) const;
     QString formatTxType(const TransactionRecord *wtx) const;
     QString formatTxToAddress(const TransactionRecord *wtx, bool tooltip) const;
+    QString formatTxFlags(const TransactionRecord *wtx) const;                                                          
     QString formatTxAmount(const TransactionRecord *wtx, bool showUnconfirmed=true, BitcoinUnits::SeparatorStyle separators=BitcoinUnits::separatorStandard) const;
     QString formatTooltip(const TransactionRecord *rec) const;
     QVariant txStatusDecoration(const TransactionRecord *wtx) const;
     QVariant txWatchonlyDecoration(const TransactionRecord *wtx) const;
     QVariant txAddressDecoration(const TransactionRecord *wtx) const;
+    QVariant txFlagsDecoration(const TransactionRecord *wtx) const;                                                               
 
 public Q_SLOTS:
     /* New transaction, or transaction changed status */

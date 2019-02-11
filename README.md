@@ -1,42 +1,41 @@
-Viacoin Core build with address indexes for use with Viacore
+Sexcoin Core build with address indexes for use with Sexcore suite
 =====================================
 
-[![Build Status](https://travis-ci.org/viacoin/viacoin.svg?branch=0.13-dev)](https://travis-ci.org/viacoin/viacoin)
 
-https://viacoin.org
+https://sexcoin.info
 
-What is Viacoin?
+What is Sexcoin?
 ----------------
 
-Viacoin is an experimental digital currency that enables instant payments to
-anyone, anywhere in the world. Viacoin uses peer-to-peer technology to operate
+Sexcoin is an experimental digital currency that enables instant payments to
+anyone, anywhere in the world. Sexcoin uses peer-to-peer technology to operate
 with no central authority: managing transactions and issuing money are carried
-out collectively by the network. Viacoin Core is the name of open source
+out collectively by the network. Sexcoin Core is the name of open source
 software which enables the use of this currency.
 
 For more information, as well as an immediately useable, binary version of
-the Viacoin Core software, see [https://viacoin.org](https://viacoin.org).
+the Sexcoin Core software, see [https://sexcoin.info](https://sexcoin.info).
 
 License
 -------
 
-Viacoin Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
+Sexcoin Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
 information or see https://opensource.org/licenses/MIT.
 
 Development Process
 -------------------
 
 The `master` branch is regularly built and tested, but is not guaranteed to be
-completely stable. [Tags](https://github.com/viacoin/viacoin/tags) are created
-regularly to indicate new official, stable release versions of Viacoin Core.
+completely stable. [Tags](https://github.com/sexcoin-project/sexcoin/tags) are created
+regularly to indicate new official, stable release versions of Sexcoin Core.
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
 
-The developer [mailing list](https://groups.google.com/forum/#!forum/viacoin-development)
+The developer [mailing list](https://groups.google.com/forum/#!forum/sexcoin-development)
 should be used to discuss complicated or controversial changes before working
 on a patch set.
 
-Developer IRC can be found on Freenode at #viacoin-dev.
+Developer IRC can be found on Freenode at #sexcoin-dev.
 
 Testing
 -------
@@ -69,7 +68,7 @@ Translations
 ------------
 
 We only accept translation fixes that are submitted through [Bitcoin Core's Transifex page](https://www.transifex.com/projects/p/bitcoin/).
-Translations are converted to Viacoin periodically.
+Translations are converted to Sexcoin periodically.
 
 Translations are periodically pulled from Transifex and merged into the git repository. See the
 [translation process](doc/translation_process.md) for details on how this works.

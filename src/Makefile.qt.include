@@ -236,9 +236,6 @@ RES_ICONS = \
   qt/res/icons/address-book.png \
   qt/res/icons/about.png \
   qt/res/icons/about_qt.png \
-  qt/res/icons/bitcoin.ico \
-  qt/res/icons/bitcoin_testnet.ico \
-  qt/res/icons/bitcoin.png \
   qt/res/icons/sexcoin.ico \
   qt/res/icons/sexcoin.png \
   qt/res/icons/sexcoin_testnet.ico \
@@ -285,6 +282,10 @@ RES_ICONS = \
   qt/res/icons/tx_input.png \
   qt/res/icons/tx_output.png \
   qt/res/icons/tx_mined.png \
+  qt/res/icons/txflag_none.png \
+  qt/res/icons/txflag_g_consent.png \
+  qt/res/icons/txflag_g_over18.png \
+  qt/res/icons/txflag_g_over21.png \
   qt/res/icons/warning.png \
   qt/res/icons/verify.png \
   qt/res/icons/transaction_abandoned.png

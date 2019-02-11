@@ -84,12 +84,12 @@ public:
     static const int RecommendedNumConfirmations = 6;
 
     TransactionRecord():
-            hash(), time(0), type(Other), address(""), debit(0), credit(0), idx(0)
+            hash(), time(0), type(Other), address(""), version(0x00000001), debit(0), credit(0), idx(0)
     {
     }
 
     TransactionRecord(uint256 hash, qint64 time):
-            hash(hash), time(time), type(Other), address(""), debit(0),
+            hash(hash), time(time), type(Other), version(0x00000001), address(""), debit(0),
             credit(0), idx(0)
     {
     }
@@ -97,7 +97,14 @@ public:
     TransactionRecord(uint256 hash, qint64 time,
                 Type type, const std::string &address,
                 const CAmount& debit, const CAmount& credit):
-            hash(hash), time(time), type(type), address(address), debit(debit), credit(credit),
+            hash(hash), time(time), type(type), address(address), debit(debit), credit(credit), version(0x00000001),
+            idx(0)
+    {
+    }
+    TransactionRecord(uint256 _hash, qint64 _time, 
+                Type _type, const std::string &_address,
+                const uint32_t& _version, const CAmount& _debit, const CAmount& _credit):
+            hash(_hash), time(_time), type(_type), address(_address), version(_version), debit(_debit), credit(_credit),
             idx(0)
     {
     }
@@ -115,6 +122,7 @@ public:
     std::string address;
     CAmount debit;
     CAmount credit;
+    uint32_t version;
     /**@}*/
 
     /** Subtransaction index, for sort key */

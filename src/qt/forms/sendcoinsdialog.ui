@@ -7,13 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>850</width>
-    <height>526</height>
+    <height>581</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Send Coins</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1,0,0">
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1,0,0,0">
    <property name="bottomMargin">
     <number>8</number>
    </property>
@@ -616,8 +616,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>830</width>
-        <height>104</height>
+        <width>834</width>
+        <height>150</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,1">
@@ -655,6 +655,102 @@
        </item>
       </layout>
      </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QFrame" name="horizontalFrame">
+     <property name="frameShape">
+      <enum>QFrame::Panel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Set Age Verification</string>
+        </property>
+        <property name="text">
+         <string>Age Verification: </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_overNone">
+        <property name="toolTip">
+         <string>Do not use age verification</string>
+        </property>
+        <property name="text">
+         <string>None</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">groupAge</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_overConsent">
+        <property name="toolTip">
+         <string>Certify that you are over the age of consent in your locale</string>
+        </property>
+        <property name="text">
+         <string>Age of Consent</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">groupAge</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_over18">
+        <property name="toolTip">
+         <string>Certify that you are 18 or older</string>
+        </property>
+        <property name="text">
+         <string>Over 18</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">groupAge</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_over21">
+        <property name="toolTip">
+         <string>Certify that you are 21 or older</string>
+        </property>
+        <property name="text">
+         <string>Over 21</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">groupAge</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_7">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
     </widget>
    </item>
    <item>
@@ -1332,5 +1428,6 @@
  <buttongroups>
   <buttongroup name="groupFee"/>
   <buttongroup name="groupCustomFee"/>
+  <buttongroup name="groupAge"/>
  </buttongroups>
 </ui>
