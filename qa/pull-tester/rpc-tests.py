@@ -76,9 +76,9 @@ for arg in sys.argv[1:]:
 
 #Set env vars
 if "VIACOIND" not in os.environ:
-    os.environ["VIACOIND"] = BUILDDIR + '/src/viacoind' + EXEEXT
+    os.environ["VIACOIND"] = BUILDDIR + '/src/sexcoind' + EXEEXT
 if "VIACOINCLI" not in os.environ:
-    os.environ["VIACOINCLI"] = BUILDDIR + '/src/viacoin-cli' + EXEEXT
+    os.environ["VIACOINCLI"] = BUILDDIR + '/src/sexcoin-cli' + EXEEXT
 
 if EXEEXT == ".exe" and "-win" not in opts:
     # https://github.com/bitcoin/bitcoin/commit/d52802551752140cf41f0d9a225a43e84404d3e9
