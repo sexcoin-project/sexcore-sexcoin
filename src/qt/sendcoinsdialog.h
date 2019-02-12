@@ -74,6 +74,10 @@ private:
     void updateFeeMinimizedLabel();
 
 private Q_SLOTS:
+    void on_radioButton_overNone(bool on);
+    void on_radioButton_overConsent(bool on);
+    void on_radioButton_over18(bool on);
+    void on_radioButton_over21(bool on);
     void on_sendButton_clicked();
     void on_buttonChooseFee_clicked();
     void on_buttonMinimizeFee_clicked();
@@ -97,6 +101,7 @@ private Q_SLOTS:
     void updateMinFeeLabel();
     void updateSmartFeeLabel();
     void updateGlobalFeeVariables();
+    void setTransactionFlags();
 
 Q_SIGNALS:
     // Fired when a message should be reported to the user
