@@ -48,10 +48,13 @@
 #include <boost/math/distributions/poisson.hpp>
 #include <boost/thread.hpp>
 
+#include <boost/random/mersenne_twister.hpp>
+#include <boost/random/uniform_int.hpp>
+
 using namespace std;
 
 #if defined(NDEBUG)
-# error "Viacoin cannot be compiled without assertions."
+# error "Sexcoin cannot be compiled without assertions."
 #endif
 
 /**
@@ -119,7 +122,7 @@ static void CheckBlockIndex(const Consensus::Params& consensusParams);
 /** Constant stuff for coinbase transactions we create: */
 CScript COINBASE_FLAGS;
 
-const string strMessageMagic = "Viacoin Signed Message:\n";
+const string strMessageMagic = "Sexcoin Signed Message:\n";
 
 // Internal stuff
 namespace {
@@ -1559,7 +1562,7 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CValidationState& state, const C
         // Remove conflicting transactions from the mempool
         BOOST_FOREACH(const CTxMemPool::txiter it, allConflicting)
         {
-            LogPrint("mempool", "replacing tx %s with %s for %s VIA additional fees, %d delta bytes\n",
+            LogPrint("mempool", "replacing tx %s with %s for %s SXC additional fees, %d delta bytes\n",
                     it->GetTx().GetHash().ToString(),
                     hash.ToString(),
                     FormatMoney(nModifiedFees - nConflictingFees),
@@ -1796,6 +1799,13 @@ bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex, const Consensus
     return true;
 }
 
+int static generateMTRandom(int s, int range)
+ {
+     boost::mt19937 gen(s);
+     boost::uniform_int<> dist(1,range);
+     return dist(gen);
+ }
+
 CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
 {
     // In -regtest mode use Bitcoin schedule
@@ -1811,40 +1821,33 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
         return nSubsidy;
     }
 
-    // Viacoin schedule
-    CAmount nSubsidy = 0;
+    // Sexcoin schedule
+    CAmount nSubsidy = 100 * COIN;
 
-    // different zero block period for testnet and mainnet
-    // mainnet not fixed until final release
-    int zeroRewardHeight = consensusParams.fPowAllowMinDifficultyBlocks ? 2001 : 10001;
-
-    int rampHeight = 43200 + zeroRewardHeight; // 4 periods of 10800
-
-    if (nHeight == 0) {
-        // no reward for genesis block
-        nSubsidy = 0;
-    } else if (nHeight == 1) {
-        // first distribution
-        nSubsidy = 10000000 * COIN;
-    } else if (nHeight <= zeroRewardHeight) {
-        // no block reward to allow difficulty to scale up and prevent instamining
-        nSubsidy = 0;
-    } else if (nHeight <= (zeroRewardHeight + 10800)) {
-        // first 10800 block after zero reward period is 10 coins per block
-        nSubsidy = 10 * COIN;
-    } else if (nHeight <= rampHeight) {
-        // every 10800 blocks reduce nSubsidy from 8 to 6
-        nSubsidy = (8 - int((nHeight-zeroRewardHeight-1) / 10800)) * COIN;
-    } else if (nHeight <= 1971000) {
-        nSubsidy = 5 * COIN;
-    } else { // (nHeight > 1971000)
-        int halvings = nHeight / consensusParams.nSubsidyHalvingInterval;
-        // Force block reward to zero when right shift is undefined.
-        if (halvings <= 64) {
-            nSubsidy = 20 * COIN;
-            nSubsidy >>= halvings;
-        }
+    int halvings = nHeight / consensusParams.nSubsidyHalvingInterval;
+    
+    if (halvings >= 64)
+            return 0;
+    
+    // Premine bounties
+    if(nHeight < 3) { // Block 1 and 2 get 1 Million SXC each
+        nSubsidy = 1000000 * COIN;
+    } else if(nHeight < 5001) { // Block 3 through 5000 get 200 SXC
+        nSubsidy = 200 * COIN;
     }
+    
+        // Superblock random reward
+    // A psuedo-random pattern is used to select "super blocks" which
+    // getet either 50x or 5x normal subsidy
+    int rand = generateMTRandom(nHeight, 100000);
+
+    if(rand > 99990) {
+        nSubsidy *= 50;
+    } else if (rand < 2001) {
+        nSubsidy *= 5 ;
+    }
+    
+    nSubsidy >>=halvings;
 
     return nSubsidy;
 }
@@ -2470,7 +2473,7 @@ bool FindUndoPos(CValidationState &state, int nFile, CDiskBlockPos &pos, unsigne
 static CCheckQueue<CScriptCheck> scriptcheckqueue(128);
 
 void ThreadScriptCheck() {
-    RenameThread("viacoin-scriptch");
+    RenameThread("sexcoin-scriptch");
     scriptcheckqueue.Thread();
 }
 
@@ -3871,9 +3874,27 @@ bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& sta
                          REJECT_INVALID, "time-too-new");
 
     // Check proof of work
-    if (block.nBits != GetNextWorkRequired(pindexPrev, &block, consensusParams)) {
-        return state.DoS(100, false, REJECT_INVALID, "bad-diffbits", false, "incorrect proof of work");
+    
+    // Only perform POW check every 11520 blocks (~4 days) on initial chain download.
+    // Sexcoin retargets every block after 156000, which causes initial chain
+    // download to become very CPU expensive and slow if we check every block.
+    // TODO: make the end date dependent instead of hard coded.
+    if(nHeight > 156000 && nHeight < 3070000 ){
+        if( nHeight % 11520 ==0){
+            if (block.nBits != GetNextWorkRequired(pindexPrev, &block, consensusParams)){
+                LogPrintf("has %08x, need %08x\n", block.nBits, GetNextWorkRequired(pindexPrev, &block, consensusParams));
+                return state.DoS(100, false, REJECT_INVALID, "bad-diffbits", false, "incorrect proof of work");
+            }else{
+                LogPrintf("PASS : %08x\n", block.nBits);
+            }
+        }
+    }else{
+        if (block.nBits != GetNextWorkRequired(pindexPrev, &block, consensusParams)){
+                LogPrintf("has %08x, need %08x\n", block.nBits, GetNextWorkRequired(pindexPrev, &block, consensusParams));
+                return state.DoS(100, false, REJECT_INVALID, "bad-diffbits", false, "incorrect proof of work");
+        }
     }
+    
     // Check timestamp against prev
     if (block.GetBlockTime() <= pindexPrev->GetMedianTimePast())
         return state.Invalid(false, REJECT_INVALID, "time-too-old", "block's timestamp is too early");
@@ -3883,25 +3904,27 @@ bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& sta
         return state.Invalid(false, REJECT_INVALID, "time-too-new", "block timestamp too far in the future");
 
     int64_t timeframe;
-    if ((consensusParams.fPowAllowMinDifficultyBlocks && nHeight < 300000) || nHeight < 451000) {
-        timeframe = 15 * 60;
+    if ((consensusParams.fPowAllowMinDifficultyBlocks && nHeight < 300000) || nHeight < 3080000 ) {
+        timeframe = 20 * 60;
     } else {
-        timeframe = 5 * 60;
+        timeframe = 2 * 60 * 60;
     }
 
     // Prevent blocks from too far in the future (timewarp)
     // Check disabled in -regtest mode because in tests GetMedianTimePast() drifts too far in the future
-    if (!Params().MineBlocksOnDemand() && (consensusParams.fPowAllowMinDifficultyBlocks || nHeight >= 100)) {
+
+    if (!Params().MineBlocksOnDemand() && (consensusParams.fPowAllowMinDifficultyBlocks || nHeight >= 2100100)) {
         if (block.GetBlockTime() > GetAdjustedTime() + timeframe) {
             return error("AcceptBlock() : block's timestamp too far in the future");
         }
 
         // Check timestamp is not too far in the past (timewarp)
         if (block.GetBlockTime() <= pindexPrev->GetBlockTime() - timeframe) {
-            return error("AcceptBlock() : block's timestamp is too early compare to last block");
+            return error("AcceptBlock() : block's timestamp is too early compared to last block");
         }
     }
 
+    
     // Hard fork to introduce OP_CHECKLOCKTIMEVERIFY at the same time as AuxPow
     // Reject block.nVersion=2 once we reach the correct height
     if ((block.nVersion & 0xFF) < VERSIONBITS_TOP_BITS
@@ -3910,15 +3933,15 @@ bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& sta
         return state.Invalid(false, REJECT_OBSOLETE, strprintf("bad-version(0x%08x)", block.nVersion),
                              strprintf("rejected nVersion=0x%08x block", block.nVersion));
     }
-
+    
     // Reject outdated version blocks when 95% (75% on testnet) of the network has upgraded:
-    for (int32_t version = 4; version <= 6; ++version) // Viacoin check for version 3, 4 and 5 upgrades
+    for (int32_t version = 4; version <= 6; ++version) // Sexcoin check for version 3, 4 and 5 upgrades
         if ((block.nVersion & 0xFF) < VERSIONBITS_TOP_BITS
             && (block.nVersion & 0xFF) < version
             && IsSuperMajority(version, pindexPrev, consensusParams.nMajorityRejectBlockOutdated, consensusParams))
             return state.Invalid(false, REJECT_OBSOLETE, strprintf("bad-version(0x%08x)", block.nVersion),
                                  strprintf("rejected nVersion=0x%08x block", block.nVersion));
-
+    
     // Reject outdated version blocks when 75% of the network (BIP9 rules) has upgraded:
     if ((block.nVersion & 0xFF) < VERSIONBITS_TOP_BITS && IsWitnessEnabled(pindexPrev, consensusParams))
         return state.Invalid(false, REJECT_OBSOLETE, strprintf("bad-version(0x%08x)", block.nVersion),
@@ -4146,7 +4169,7 @@ static bool IsSuperMajority(int minVersion, const CBlockIndex* pstart, unsigned 
     unsigned int nFound = 0;
     for (int i = 0; i < consensusParams.nMajorityWindow && nFound < nRequired && pstart != NULL; i++)
     {
-        // Viacoin mask off the Chain_ID and AuxPow version
+        // Sexcoin mask off the Chain_ID and AuxPow version
         if ((pstart->nVersion & 0xFF) >= (minVersion & 0xFF))
             ++nFound;
         pstart = pstart->pprev;

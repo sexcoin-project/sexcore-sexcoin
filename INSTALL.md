@@ -1,5 +1,5 @@
-Building Viacoin
+Building Sexcoin
 ================
 
 See doc/build-*.md for instructions on building the various
-elements of the Viacoin Core reference implementation of Viacoin.
+elements of the Sexcoin Core reference implementation of Sexcoin.

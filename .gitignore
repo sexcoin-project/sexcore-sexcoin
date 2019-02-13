@@ -1,12 +1,12 @@
 *.tar.gz
 
 *.exe
-src/viacoin
-src/viacoind
-src/viacoin-cli
-src/viacoin-tx
-src/test/test_viacoin
-src/qt/test/test_viacoin-qt
+src/sexcoin
+src/sexcoind
+src/sexcoin-cli
+src/sexcoin-tx
+src/test/test_sexcoin
+src/qt/test/test_sexcoin-qt
 
 # autoreconf
 Makefile.in
@@ -55,7 +55,7 @@ src/qt/test/moc*.cpp
 *.o
 *.o-*
 *.patch
-.viacoin
+.sexcoin
 *.a
 *.pb.cc
 *.pb.h
@@ -74,12 +74,12 @@ src/qt/test/moc*.cpp
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
-viacoin-qt
-Viacoin-Qt.app
+sexcoin-qt
+Sexcoin-Qt.app
 
 # Unit-tests
 Makefile.test
-viacoin-qt_test
+sexcoin-qt_test
 src/test/buildenv.py
 
 # Resources cpp

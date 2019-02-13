@@ -117,6 +117,13 @@ SendCoinsDialog::SendCoinsDialog(const PlatformStyle *platformStyle, QWidget *pa
     ui->customFee->setValue(settings.value("nTransactionFee").toLongLong());
     ui->checkBoxMinimumFee->setChecked(settings.value("fPayOnlyMinFee").toBool());
     minimizeFeeSection(settings.value("fFeeSectionMinimized").toBool());
+    ui->groupAge->setId(ui->radioButton_overNone, 0);
+    ui->groupAge->setId(ui->radioButton_overConsent, 1);
+    ui->groupAge->setId(ui->radioButton_over18, 2);
+    ui->groupAge->setId(ui->radioButton_over21, 3);
+    ui->groupFee->button(0)->setChecked(true);
+    
+    nTransactionFlags = 0;
 }
 
 void SendCoinsDialog::setClientModel(ClientModel *clientModel)
@@ -155,6 +162,13 @@ void SendCoinsDialog::setModel(WalletModel *model)
         ui->frameCoinControl->setVisible(model->getOptionsModel()->getCoinControlFeatures());
         coinControlUpdateLabels();
 
+        // age verification
+        //connect(ui->groupAge, SIGNAL(buttonClicked(int)), this, SLOT(updateAgeVerification());
+        connect(ui->radioButton_overNone, SIGNAL(toggled(bool)), this, SLOT(on_radioButton_overNone(bool)));
+        connect(ui->radioButton_overConsent, SIGNAL(toggled(bool)), this, SLOT(on_radioButton_overConsent(bool)));
+        connect(ui->radioButton_over18, SIGNAL(toggled(bool)), this, SLOT(on_radioButton_over18(bool)));
+        connect(ui->radioButton_over21, SIGNAL(toggled(bool)), this, SLOT(on_radioButton_over21(bool)));
+        
         // fee section
         connect(ui->sliderSmartFee, SIGNAL(valueChanged(int)), this, SLOT(updateSmartFeeLabel()));
         connect(ui->sliderSmartFee, SIGNAL(valueChanged(int)), this, SLOT(updateGlobalFeeVariables()));
@@ -219,6 +233,9 @@ void SendCoinsDialog::on_sendButton_clicked()
     {
         return;
     }
+    
+    // Make sure nTransactionFlags are valid
+    setTransactionFlags();
 
     fNewRecipientAllowed = false;
     WalletModel::UnlockContext ctx(model->requestUnlock());
@@ -232,6 +249,7 @@ void SendCoinsDialog::on_sendButton_clicked()
     // prepare transaction for getting txFee earlier
     WalletModelTransaction currentTransaction(recipients);
     WalletModel::SendCoinsReturn prepareStatus;
+    currentTransaction.setTransactionFlags(nTransactionFlags);
     if (model->getOptionsModel()->getCoinControlFeatures()) // coin control enabled
         prepareStatus = model->prepareTransaction(currentTransaction, CoinControlDialog::coinControl);
     else
@@ -543,6 +561,40 @@ void SendCoinsDialog::processSendCoinsReturn(const WalletModel::SendCoinsReturn 
     Q_EMIT message(tr("Send Coins"), msgParams.first, msgParams.second);
 }
 
+
+void SendCoinsDialog::setTransactionFlags(){
+    if(ui->radioButton_overNone->isChecked())
+        nTransactionFlags = TX_F_NONE;
+    else if(ui->radioButton_overConsent->isChecked())
+        nTransactionFlags = TX_F_IS_OVER_CONSENT;
+    else if(ui->radioButton_over18->isChecked())
+        nTransactionFlags = TX_F_IS_OVER_18;
+    else if(ui->radioButton_over21->isChecked())
+        nTransactionFlags = TX_F_IS_OVER_21;
+    else
+        nTransactionFlags = TX_F_NONE;
+}
+
+
+void SendCoinsDialog::on_radioButton_overNone(bool on){
+    if(on)
+        setTransactionFlags();
+}
+
+void SendCoinsDialog::on_radioButton_overConsent(bool on){
+    if(on)
+        setTransactionFlags();
+}
+
+void SendCoinsDialog::on_radioButton_over18(bool on){
+    if(on)
+        setTransactionFlags();
+}
+
+void SendCoinsDialog::on_radioButton_over21(bool on){
+    if(on)
+        setTransactionFlags();
+}
 void SendCoinsDialog::minimizeFeeSection(bool fMinimize)
 {
     ui->labelFeeMinimized->setVisible(fMinimize);
@@ -754,7 +806,7 @@ void SendCoinsDialog::coinControlChangeEdited(const QString& text)
         }
         else if (!addr.IsValid()) // Invalid address
         {
-            ui->labelCoinControlChangeLabel->setText(tr("Warning: Invalid Viacoin address"));
+            ui->labelCoinControlChangeLabel->setText(tr("Warning: Invalid Sexcoin address"));
         }
         else // Valid address
         {

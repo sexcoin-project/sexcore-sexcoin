@@ -40,9 +40,9 @@ QString BitcoinUnits::name(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("VIA");
-    case mBTC: return QString("mVIA");
-    case uBTC: return QString::fromUtf8("μVIA");
+    case BTC: return QString("SXC");
+    case mBTC: return QString("mSXC");
+    case uBTC: return QString::fromUtf8("μSXC");
     default: return QString("???");
     }
 }
@@ -51,9 +51,9 @@ QString BitcoinUnits::description(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("Viacoins");
-    case mBTC: return QString("Milli-Viacoins (1 / 1" THIN_SP_UTF8 "000)");
-    case uBTC: return QString("Micro-Viacoins (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+    case BTC: return QString("Sexcoins");
+    case mBTC: return QString("Milli-Sexcoins (1 / 1" THIN_SP_UTF8 "000)");
+    case uBTC: return QString("Micro-Sexcoins (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
     default: return QString("???");
     }
 }
