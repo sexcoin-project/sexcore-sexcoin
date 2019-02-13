@@ -1,6 +1,6 @@
 Sexcoin Core build with address indexes for use with Sexcore suite
 =====================================
-
+[![Build Status](https://travis-ci.org/lavajumper/sexcore-sexcoin.svg?branch=0.13-dev)](https://travis-ci.org/lavajumper/sexcore-sexcoin)
 
 https://sexcoin.info
 
