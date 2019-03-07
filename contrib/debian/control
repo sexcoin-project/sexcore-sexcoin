@@ -1,7 +1,7 @@
-Source: viacoin
+Source: sexcoin
 Section: utils
 Priority: optional
-Maintainer: Jonas Smedegaard <dr@jones.dk>
+Maintainer: Lavajumper <dr@jones.dk>
 Uploaders: Micah Anderson <micah@debian.org>
 Build-Depends: debhelper,
  devscripts,
@@ -23,45 +23,45 @@ Build-Depends: debhelper,
  libprotobuf-dev, protobuf-compiler,
  python
 Standards-Version: 3.9.2
-Homepage: http://www.viacoin.org/
-Vcs-Git: git://github.com/viacoin/viacoin.git
-Vcs-Browser: http://github.com/viacoin/viacoin
+Homepage: http://sexcoin.info/
+Vcs-Git: git://github.com/sexcoin-project/sexcoin.git
+Vcs-Browser: http://github.com/sexcoin-project/sexcoin
 
-Package: viacoind
+Package: sexcoind
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - daemon
- Viacoin is an experimental new digital currency that enables instant
- payments to anyone, anywhere in the world. Viacoin uses peer-to-peer
+ Sexcoin is an experimental new digital currency that enables instant
+ payments to anyone, anywhere in the world. Sexcoin uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. Viacoin Core
+ and issuing money are carried out collectively by the network. Sexcoin Core
  is the name of the open source software which enables the use of this currency.
  .
- This package provides the daemon, viacoind, and the CLI tool
- viacoin-cli to interact with the daemon.
+ This package provides the daemon, sexcoind, and the CLI tool
+ sexcoin-cli to interact with the daemon.
 
-Package: viacoin-qt
+Package: sexcoin-qt
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - Qt GUI
- Viacoin is an experimental new digital currency that enables instant
- payments to anyone, anywhere in the world. Viacoin uses peer-to-peer
+ Sexcoin is an experimental new digital currency that enables instant
+ payments to anyone, anywhere in the world. Sexcoin uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. Viacoin Core
+ and issuing money are carried out collectively by the network. Sexcoin Core
  is the name of the open source software which enables the use of this currency.
  .
- This package provides Viacoin-Qt, a GUI for Viacoin based on Qt.
+ This package provides Sexcoin-Qt, a GUI for Sexcoin based on Qt.
 
-Package: viacoin-tx
+Package: sexcoin-tx
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer digital currency - standalone transaction tool
- Viacoin is an experimental new digital currency that enables instant
- payments to anyone, anywhere in the world. Viacoin uses peer-to-peer
+ Sexcoin is an experimental new digital currency that enables instant
+ payments to anyone, anywhere in the world. Sexcoin uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. Viacoin Core
+ and issuing money are carried out collectively by the network. Sexcoin Core
  is the name of the open source software which enables the use of this currency.
  .
- This package provides viacoin-tx, a command-line transaction creation
- tool which can be used without a viacoin daemon.  Some means of
+ This package provides sexcoin-tx, a command-line transaction creation
+ tool which can be used without a sexcoin daemon.  Some means of
  exchanging minimal transaction data with peers is still required.
