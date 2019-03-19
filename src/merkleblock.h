@@ -142,6 +142,8 @@ public:
 
     // Create from a CBlock, matching the txids in the set
     CMerkleBlock(const CBlock& block, const std::set<uint256>& txids);
+    
+    CMerkleBlock(const CBlock& block, CBloomFilter& filter, const std::map<uint256, std::shared_ptr<CAuxPow> >& mapDirtyAuxPow);
 
     CMerkleBlock() {}
 
@@ -149,13 +151,13 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        //READWRITE(header);
-        READWRITE(header.nVersion);
-        READWRITE(header.hashPrevBlock);
-        READWRITE(header.hashMerkleRoot);
-        READWRITE(header.nTime);
-        READWRITE(header.nBits);
-        READWRITE(header.nNonce);
+        READWRITE(header);
+        //READWRITE(header.nVersion);
+        //READWRITE(header.hashPrevBlock);
+        //READWRITE(header.hashMerkleRoot);
+        //READWRITE(header.nTime);
+        //READWRITE(header.nBits);
+        //READWRITE(header.nNonce);
         READWRITE(txn);
     }
 };
